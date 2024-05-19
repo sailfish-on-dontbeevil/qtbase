@@ -124,8 +124,8 @@ void QEvdevMouseManager::handleMouseEvent(int x, int y, bool abs, Qt::MouseButto
 {
     // update current absolute coordinates
     if (!abs) {
-        m_x += x;
-        m_y += y;
+        m_x += -y;
+        m_y += x;
     } else {
         m_x = x;
         m_y = y;
