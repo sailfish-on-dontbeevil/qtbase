@@ -302,9 +302,13 @@ void QHighDpiScaling::updateHighDpiScaling()
     }
     m_active = m_globalScalingActive || m_screenFactorSet || m_pixelDensityScalingActive;
 
-    QPlatformScreen *primaryScreen = QGuiApplication::primaryScreen()->handle();
-    qreal sf = screenSubfactor(primaryScreen);
-    QDpi primaryDpi = primaryScreen->logicalDpi();
+    QScreen *primaryScreen = QGuiApplication::primaryScreen();
+    if (!primaryScreen) {
+        qWarning() << "No primary screen found for dpi scaling calculation";
+        return;
+    }
+    qreal sf = screenSubfactor(primaryScreen->handle());
+    QDpi primaryDpi = primaryScreen->handle()->logicalDpi();
     m_logicalDpi = QDpi(primaryDpi.first / sf, primaryDpi.second / sf);
 }
 
