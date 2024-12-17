@@ -1,3 +1,10 @@
+# libQtPlatformSupport is not built as a shared library, only as a
+# static .a lib-archive. By default the OBS build removes all discovered
+# libFOO.a files and as such rpmlint never complains about
+# installed-but-unpackaged static libs.
+# This flag tells rpmbuild to behave.
+%define keepstatic 1
+
 # Version is the date of latest commit in qtbase, followed by 'g' + few
 # characters of the last git commit ID.
 # NOTE: tarball's prefix is 'qt5-base' until version number starts to
@@ -500,10 +507,12 @@ fi # config.status check
 #    -developer-build \
 #%endif
 
-%make_build
+make %{?_smp_mflags}
+
 
 %install
-%make_install INSTALL_ROOT=%{buildroot}
+rm -rf %{buildroot}
+%make_install
 #
 # We don't need qt5/Qt/
 rm -rf %{buildroot}/%{_includedir}/qt5/Qt
