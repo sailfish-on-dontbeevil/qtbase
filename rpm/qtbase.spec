@@ -740,7 +740,7 @@ install -D -p -m 0644 %{_sourcedir}/qt.conf %{buildroot}%{_libdir}/qt5/bin/qt.co
 %{_libdir}/libQt5OpenGL.prl
 %{_libdir}/libQt5OpenGLExtensions.prl
 %{_libdir}/libQt5OpenGL.so
-#{_libdir}/libQt5OpenGLExtensions.a
+%{_libdir}/libQt5OpenGLExtensions.a
 %{_libdir}/pkgconfig/Qt5OpenGL.pc
 %{_libdir}/pkgconfig/Qt5OpenGLExtensions.pc
 %{_datadir}/qt5/mkspecs/modules/qt_lib_opengl.pri
@@ -816,13 +816,13 @@ install -D -p -m 0644 %{_sourcedir}/qt.conf %{buildroot}%{_libdir}/qt5/bin/qt.co
 %defattr(-,root,root,-)
 %{_includedir}/qt5/QtPlatformSupport/
 %{_libdir}/libQt5PlatformSupport.prl
-#{_libdir}/libQt5PlatformSupport.a
+%{_libdir}/libQt5PlatformSupport.a
 %{_datadir}/qt5/mkspecs/modules/qt_lib_platformsupport_private.pri
 
 %files qtbootstrap-devel
 %defattr(-,root,root,-)
 %{_libdir}/libQt5Bootstrap.prl
-#{_libdir}/libQt5Bootstrap.a
+%{_libdir}/libQt5Bootstrap.a
 %{_datadir}/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri
 
 %files qtprintsupport
